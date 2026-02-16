@@ -2,8 +2,8 @@ name: Auto Reading Bot
 
 on:
   # 定时触发 - 每天早上8点和晚上8点执行
-  # schedule:
-  #   - cron: '0 0 * * *'    # UTC 00:00 = 北京时间 08:00
+  schedule:
+    - cron: '0 0 * * *'    # UTC 00:00 = 北京时间 08:00
   #   - cron: '0 12 * * *'   # UTC 12:00 = 北京时间 20:00
   
   # 拉取请求触发，用于测试阅读
@@ -67,7 +67,7 @@ jobs:
           mode: "${{ github.event.inputs.reading_mode || 'smart_random' }}"
           # 目标阅读时长（分钟），支持区间随机，格式如："1" 或 "1-2"，当前为：1分钟
           target_duration: "${{ github.event.inputs.target_duration || '1' }}"
-          reading_interval: "30-48"
+          reading_interval: "43-55"
           use_curl_data_first: true
           fallback_to_config: true
           smart_random:

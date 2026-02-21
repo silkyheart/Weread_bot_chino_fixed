@@ -20,7 +20,7 @@ on:
       target_duration:
         description: '阅读时长（分钟，格式：10-20。建议：频繁运行时设置5-10分钟，GitHub免费版每月2000分钟额度）'
         required: false
-        default: '1-2'
+        default: '45-50'
         type: string
       reading_mode:
         description: '阅读模式'
@@ -66,7 +66,7 @@ jobs:
         reading:
           mode: "${{ github.event.inputs.reading_mode || 'smart_random' }}"
           # 目标阅读时长（分钟），支持区间随机，格式如："1" 或 "1-2"，当前为：1分钟
-          target_duration: "${{ github.event.inputs.target_duration || '1' }}"
+          target_duration: "${{ github.event.inputs.target_duration || '45' }}"
           reading_interval: "1-2"
           use_curl_data_first: true
           fallback_to_config: true
@@ -128,8 +128,8 @@ jobs:
         FEISHU_MSG_TYPE: ${{ secrets.FEISHU_MSG_TYPE }}
         WEWORK_WEBHOOK_URL: ${{ secrets.WEWORK_WEBHOOK_URL }}
         WEWORK_MSG_TYPE: ${{ secrets.WEWORK_MSG_TYPE }}
-        DINGTALK_WEBHOOK_URL: ${{ secrets.DINGTALK_WEBHOOK_URL }}
-        DINGTALK_MSG_TYPE: ${{ secrets.DINGTALK_MSG_TYPE }}
+        DINGTALK_WEBHOOK_URL: 'https://oapi.dingtalk.com/robot/send?access_token=a683e63c6f977512de2743399c0a4938615a03233b3844b66614116d46a97b6f'
+        DINGTALK_MSG_TYPE: ${{ secrets.DINGTALK_MSG_TYPE || 'text'}}
         GOTIFY_SERVER: ${{ secrets.GOTIFY_SERVER }}
         GOTIFY_TOKEN: ${{ secrets.GOTIFY_TOKEN }}
         GOTIFY_PRIORITY: ${{ secrets.GOTIFY_PRIORITY }}
